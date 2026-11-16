@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<HBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.ftp.client.LoginController" styleClass="login-root">
+
+    <!-- ================= LEFT: BRANDING ================= -->
+    <VBox styleClass="login-branding" spacing="18" HBox.hgrow="ALWAYS">
+        <padding><Insets top="60" right="50" bottom="40" left="50"/></padding>
+
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <StackPane styleClass="brand-logo-circle">
+                <FontIcon iconLiteral="fas-building" iconSize="24" styleClass="brand-logo-icon"/>
+            </StackPane>
+            <VBox spacing="2">
+                <Label text="FTP Client Manager" styleClass="brand-name"/>
+                <Label text="Secure File Transfer Platform" styleClass="brand-tag"/>
+            </VBox>
+        </HBox>
+
+        <Region prefHeight="30"/>
+
+        <Label text="Quản lý &amp; truyền file&#10;an toàn, nhanh chóng." styleClass="brand-headline"/>
+
+        <VBox spacing="16">
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <FontIcon iconLiteral="fas-shield-alt" iconSize="16" styleClass="feature-icon"/>
+                <Label text="Bảo mật kết nối Socket TCP" styleClass="feature-text"/>
+            </HBox>
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <FontIcon iconLiteral="fas-cloud-upload-alt" iconSize="16" styleClass="feature-icon"/>
+                <Label text="Upload / Download với ProgressBar" styleClass="feature-text"/>
+            </HBox>
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <FontIcon iconLiteral="fas-sync-alt" iconSize="16" styleClass="feature-icon"/>
+                <Label text="Đồng bộ dữ liệu với MySQL" styleClass="feature-text"/>
+            </HBox>
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <FontIcon iconLiteral="fas-chart-line" iconSize="16" styleClass="feature-icon"/>
+                <Label text="Lịch sử thao tác &amp; phân quyền" styleClass="feature-text"/>
+            </HBox>
+        </VBox>
+
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <Label text="© 2026 FTP Client Manager · Lab 2 — Lập trình mạng" styleClass="brand-footer"/>
+    </VBox>
+
+    <!-- ================= RIGHT: LOGIN FORM ================= -->
+    <StackPane styleClass="login-form-side" HBox.hgrow="ALWAYS">
+        <VBox fx:id="loginCard" styleClass="login-form-card" spacing="16" maxWidth="430" maxHeight="-Infinity">
+            <padding><Insets top="36" right="40" bottom="36" left="40"/></padding>
+
+            <Label text="Chào mừng trở lại" styleClass="form-title"/>
+            <Label text="Đăng nhập để tiếp tục quản lý máy chủ FTP." styleClass="form-subtitle"/>
+
+            <TabPane styleClass="auth-tabs" tabClosingPolicy="UNAVAILABLE">
+                <Tab text="Đăng nhập">
+                    <VBox spacing="12">
+                        <padding><Insets top="14" right="0" bottom="0" left="0"/></padding>
+
+                        <Label text="Máy chủ" styleClass="field-label"/>
+                        <ComboBox fx:id="cbServer" maxWidth="Infinity" editable="true" styleClass="auth-combo"
+                          promptText="VD: 192.168.1.25:2121"/>
+
+                        <Label text="Tên đăng nhập" styleClass="field-label"/>
+                        <TextField fx:id="txtUser" promptText="Nhập tên đăng nhập" styleClass="auth-field"/>
+
+                        <Label text="Mật khẩu" styleClass="field-label"/>
+                        <HBox spacing="8" alignment="CENTER_LEFT">
+                            <PasswordField fx:id="txtPass" promptText="Nhập mật khẩu"
+                                           styleClass="auth-field" HBox.hgrow="ALWAYS"/>
+                            <TextField fx:id="txtPassVisible" promptText="Nhập mật khẩu"
+                                       styleClass="auth-field" HBox.hgrow="ALWAYS"
+                                       visible="false" managed="false"/>
+                            <ToggleButton fx:id="btnTogglePass" onAction="#togglePassword"
+                                          styleClass="eye-button" text="">
+                                <graphic><FontIcon iconLiteral="fas-eye" iconSize="13"/></graphic>
+                            </ToggleButton>
+                        </HBox>
+
+                        <Label fx:id="lblError" styleClass="error-label" visible="false" managed="false"/>
+
+                        <StackPane>
+                            <Button fx:id="btnLogin" text="ĐĂNG NHẬP" onAction="#handleLogin"
+                                    maxWidth="Infinity" styleClass="btn-login"/>
+                            <ProgressIndicator fx:id="loginSpinner" prefWidth="18" prefHeight="18"
+                                               visible="false" managed="false"
+                                               StackPane.alignment="CENTER_RIGHT" translateX="-14"
+                                               styleClass="login-spinner"/>
+                        </StackPane>
+
+                        <VBox styleClass="trial-box" spacing="4">
+                            <padding><Insets top="10" right="14" bottom="10" left="14"/></padding>
+                            <Label text="Tài khoản dùng thử" styleClass="trial-title"/>
+                            <Label text="admin / 123456  ·  quyền admin" styleClass="trial-item"/>
+                            <Label text="tri / 123456  ·  quyền user" styleClass="trial-item"/>
+                        </VBox>
+                    </VBox>
+                </Tab>
+
+                <Tab text="Đăng ký">
+                    <VBox spacing="10" alignment="CENTER">
+                        <padding><Insets top="40" right="0" bottom="40" left="0"/></padding>
+                        <FontIcon iconLiteral="fas-user-plus" iconSize="34" styleClass="register-icon"/>
+                        <Label text="Đăng ký tài khoản" styleClass="form-title-small"/>
+                        <Label text="Vui lòng liên hệ Admin để được cấp tài khoản FTP."
+                               styleClass="form-subtitle" wrapText="true"/>
+                    </VBox>
+                </Tab>
+            </TabPane>
+        </VBox>
+    </StackPane>
+</HBox>

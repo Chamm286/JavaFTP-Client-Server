@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.ftp.client.MainController" styleClass="main-root">
+
+    <!-- ================= HEADER ================= -->
+    <top>
+        <HBox styleClass="dash-header" spacing="14" alignment="CENTER_LEFT">
+            <padding><Insets top="12" right="24" bottom="12" left="24"/></padding>
+
+            <StackPane styleClass="dash-logo">
+                <FontIcon iconLiteral="fas-server" iconSize="17" styleClass="dash-logo-icon"/>
+            </StackPane>
+            <VBox spacing="1">
+                <Label text="FTP Client Manager" styleClass="dash-logo-title"/>
+                <Label text="File Transfer Dashboard" styleClass="dash-logo-sub"/>
+            </VBox>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <StackPane styleClass="avatar-circle">
+                <Label fx:id="lblAvatar" text="BT" styleClass="avatar-text"/>
+            </StackPane>
+
+            <VBox alignment="CENTER_RIGHT" spacing="2">
+                <Label fx:id="lblGreeting" text="Xin chào, Nguyễn Thị Bích Trâm" styleClass="dash-greeting"/>
+                <HBox spacing="6" alignment="CENTER_RIGHT">
+                    <Label fx:id="lblRole" text="admin" styleClass="role-badge"/>
+                    <Label fx:id="lblEndpoint" text="admin@127.0.0.1:2121" styleClass="dash-endpoint"/>
+                </HBox>
+            </VBox>
+
+            <Button fx:id="btnLogout" text="Logout" onAction="#handleLogout" styleClass="btn-logout"/>
+        </HBox>
+    </top>
+
+    <!-- ================= CENTER ================= -->
+    <center>
+        <SplitPane dividerPositions="0.45" styleClass="dash-split">
+            <VBox styleClass="dash-panel" spacing="10">
+                <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <FontIcon iconLiteral="fas-laptop" iconSize="13" styleClass="panel-icon"/>
+                    <Label text="LOCAL FILES" styleClass="section-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblLocalPath" text="" styleClass="section-hint"/>
+                </HBox>
+                <TreeView fx:id="treeLocal" styleClass="dash-tree" VBox.vgrow="ALWAYS"/>
+            </VBox>
+
+            <VBox styleClass="dash-panel" spacing="10">
+                <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <FontIcon iconLiteral="fas-cloud" iconSize="13" styleClass="panel-icon"/>
+                    <Label text="REMOTE FILES" styleClass="section-title"/>
+                    <Label fx:id="lblRemotePath" text="/" styleClass="path-pill"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="btnUp" text="Up" onAction="#handleUp" styleClass="btn-tool"/>
+                    <Button fx:id="btnUpload" text="Upload" onAction="#handleUpload" styleClass="btn-tool"/>
+                    <Button fx:id="btnDownload" text="Download" onAction="#handleDownload" styleClass="btn-tool"/>
+                    <Button fx:id="btnDelete" text="Delete" onAction="#handleDelete" styleClass="btn-tool-danger"/>
+                    <Button fx:id="btnRefresh" text="Refresh" onAction="#handleRefresh" styleClass="btn-tool"/>
+                </HBox>
+
+                <TableView fx:id="tableRemote" styleClass="dash-table" VBox.vgrow="ALWAYS"/>
+            </VBox>
+        </SplitPane>
+    </center>
+
+    <!-- ================= BOTTOM ================= -->
+    <bottom>
+        <HBox styleClass="dash-status" spacing="12" alignment="CENTER_LEFT">
+            <padding><Insets top="9" right="24" bottom="9" left="24"/></padding>
+            <FontIcon iconLiteral="fas-circle" iconSize="7" styleClass="status-dot"/>
+            <Label fx:id="lblStatus" text="Sẵn sàng" styleClass="status-text"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="lblProgress" text="" styleClass="status-text"/>
+            <ProgressBar fx:id="progressBar" prefWidth="220" visible="false" styleClass="progress-bar"/>
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,6 @@
+# Sao chép file này thành db.properties nếu MySQL của bạn khác mặc định.
+# File db.properties đã được .gitignore (không commit thông tin kết nối).
+
+db.url=jdbc:mysql://localhost:3307/lab2_ftp_db?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Ho_Chi_Minh
+db.username=root
+db.password=

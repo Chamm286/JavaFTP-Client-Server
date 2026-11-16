@@ -1,0 +1,46 @@
+# === Runtime data (uploaded files, do not commit) ===
+server_files/
+
+# === Maven / Java build outputs ===
+target/
+out/
+bin/
+*.class
+*.jar
+*.war
+*.ear
+
+# === IDE configuration files ===
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+
+# === Security / credentials (never commit) ===
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.jks
+secrets.properties
+config.local.properties
+db.properties
+
+# === Logs ===
+*.log
+logs/
+
+# === OS generated files ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Temporary files ===
+*.tmp
+*.swp
+*~
